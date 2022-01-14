@@ -1,0 +1,88 @@
+crear proyecto 
+djano-admin startproject nombre_proyecto
+
+detalle de los ficheros creados del proyecto
+
+__init__.py
+es un indicador que debe de revisar los archivos que tiene dentro de la carpeta
+
+asgi.py
+
+
+settings.py
+archivo principal version de django
+
+urls.py
+
+
+wsgi.py
+
+manage.py
+
+
+
+Aplicaciones
+es un modulo para django
+podemos hacer las apps dentro de la raiz o
+en otra carpeta llamada como uno quiera por ejemplo apps
+dentro hay que hacer un archivo .py de nombre __init__.py
+para que django la reconozca
+
+para hacer apps hay dos formas
+
+forma uno
+
+python manage.py startapp nombre
+
+forma dos 
+si usamos el separar las apps fuera de la carpeta raiz se hace
+django-admin startapp nombre ahora si es para migrar la bd si estoy en la otra carpeta
+entonces regreso a la carpeta raiz donde esta el manage.py
+
+
+ver el proyecto para ver lo descrito
+
+
+Modelos
+
+es la representacion de tablas de una base de datos
+los modelos son poo para generar cada tabla 
+
+el punto en django es para acceder a una carpeta
+
+crear superusuario
+
+python manage.py createsuperuser
+
+
+agregar los modelos al dashboard de admin
+admin.py
+
+importamos los modelos 
+from .models import *
+
+
+
+class ProductosAdmin(admin.ModelAdmin):
+    readonly_fields=("created","updated")
+
+
+luego registramos ese modelos en el sitio
+admin.site.register(Productos) ese el registro del modelo o la tabla Productos
+
+envios de metodos
+
+GET POST
+
+if request.method == 'GET':
+    form = FormProducto()
+    context = {
+        'form':form
+    }
+
+
+else:
+    form = FormProducto()
+    print(form)
+
+    return render(request,'compras/nuevo.html')

@@ -1,0 +1,45 @@
+{% extends 'compras/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compras</title>
+</head>
+<body>
+   
+  {% block content %}
+    <h1 align="center">COMPRAS</h1>
+    <div class="container" align="center">
+    <table class="table-bordered">
+        <thead align="center">
+            <tr>
+              <th scope="col">Producto ID</th>
+              <th scope="col">Producto</th>
+              <th scope="col">Categoria</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Opcion</th>
+            </tr>
+          </thead>
+        {% for producto in form %}
+        <tbody align="center">
+          <td>{{producto.id}}</td>
+          <td>{{producto.nombre}}</td>
+          <td>{{producto.categoria}}</td>
+          <td>{{producto.cantidad}}</td>
+          <td>Q.{{producto.precio}}</td>
+          <td>
+              <a type="button" class="btn btn-warning" href="{% url 'Editar' producto.id %}">Editar </a>
+              <a type="button" class="btn btn-danger" href="{% url 'Eliminar' producto.id %}"> Elimiar</a>
+          </td> 
+        </tbody>
+        {% endfor %}
+    </table>
+  </div>
+    {% endblock %}
+
+
+</body>
+</html>

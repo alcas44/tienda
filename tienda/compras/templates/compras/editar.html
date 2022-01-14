@@ -1,0 +1,12 @@
+{% extends 'compras/base.html' %}
+
+{% block content %}
+    <h1 align="center">MODIFICACION DE PRODUCTO</h1><br><br>
+    <form action="" method="POST" align="center" >{% csrf_token %}
+        {{ form }}
+        <div align="center"><br><br>
+            <button type="submit">Modificar</button>
+            <button type="reset">Cancelar</button>
+        </div>
+    </form>
+{% endblock %}
