@@ -31,8 +31,8 @@
           <td>{{producto.cantidad}}</td>
           <td>Q.{{producto.precio}}</td>
           <td>
-              <a type="button" class="btn btn-warning" href="{% url 'Editar' producto.id %}">Editar </a>
-              <a type="button" class="btn btn-danger" href="{% url 'Eliminar' producto.id %}"> Elimiar</a>
+              <a type="button" class="btn btn-warning" href="{% url 'Editar' producto.id %}">Editar</a>
+              <a type="button" class="btn btn-danger" href="{% url 'Eliminar' producto.id %}">Elimiar</a>
           </td> 
         </tbody>
         {% endfor %}
