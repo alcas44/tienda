@@ -5,10 +5,10 @@ from .models import Producto #importo los modelos para usarlos como plantillas
 from .forms import FormProducto #importo el formulario para usar
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from django.contrib.auth.mixins import LoginRequiredMixin
 
    
 def inicio(request):
-   
      if request.method == "POST":
          u = request.POST["user"]
          p = request.POST["pass"]
@@ -18,7 +18,7 @@ def inicio(request):
              return redirect('Compras')
              
          else:
-             return redirect('Inicio')    
+             return redirect('Compras')    
      
 
      return render(request, 'compras/index.html')  
@@ -26,8 +26,7 @@ def inicio(request):
 
 def salir(request):
    logout(request)
-   request.session.flush()
-   messages.success(request,"Successfully logged out")
+   messages.info(request,"Sesion Terminada")
    return redirect("Inicio")
 
 

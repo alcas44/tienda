@@ -8,9 +8,17 @@
     <title>Compras</title>
 </head>
 <body>
-   
+     
   {% block content %}
-    <h1 align="center">COMPRAS</h1>
+  {% if user.is_authenticated %}
+        <h4>Hola {{ user.username }}</h4>
+        <h6>{{ user.last_login }}</h6>
+    {% else %}
+         <script>
+             window.location.href="{% http://localhost:8000/ %}";
+         </script>
+    {% endif %}
+   <h1 align="center">COMPRAS</h1>
     <div class="container" align="center">
     <table class="table-bordered">
         <thead align="center">
