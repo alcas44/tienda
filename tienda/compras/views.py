@@ -1,14 +1,40 @@
+from django.contrib import messages
 from django.forms import forms
 from django.shortcuts import redirect, render
 from .models import Producto #importo los modelos para usarlos como plantillas
 from .forms import FormProducto #importo el formulario para usar
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
+
+   
+def inicio(request):
+   
+     if request.method == "POST":
+         u = request.POST["user"]
+         p = request.POST["pass"]
+         ver = authenticate(request,username = u, password = p)
+         if u is not None:
+             login(request, ver)
+             return redirect('Compras')
+             
+         else:
+             return redirect('Inicio')    
+     
+
+     return render(request, 'compras/index.html')  
+    
+
+def salir(request):
+   logout(request)
+   request.session.flush()
+   messages.success(request,"Successfully logged out")
+   return redirect("Inicio")
+
 
 
 def compras(request):
     form = Producto.objects.all()
     return render(request,"compras/compras.html",{'form':form})
-
-
 
 
 def nuevo(request):
